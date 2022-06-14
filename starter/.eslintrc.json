@@ -23,7 +23,16 @@
     "react/react-in-jsx-scope": "off",
     "prettier/prettier": [
       "error",
-      { "singleQuote": true, "parser": "flow", "endOfLine": "auto" }
+      {
+        "singleQuote": true,
+        "parser": "flow",
+        "endOfLine": "auto",
+        "semi": true,
+        "tabWidth": 4,
+        "printWidth": 100,
+        "trailingComma": "none",
+        "jsxBracketSameLine": true
+      }
     ]
   }
 }
