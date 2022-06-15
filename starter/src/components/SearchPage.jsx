@@ -52,9 +52,9 @@ const SearchPage = ({ updateBookShelf }) => {
             <div className="search-books-results">
                 <ol className="books-grid">
                     {displayBooks.map((book) => {
-                        <li key={book.id}>
+                        <div key={book.id}>
                             <Book book={book} updateBookShelf={updateBookShelf} />
-                        </li>;
+                        </div>;
                     })}
                 </ol>
             </div>
