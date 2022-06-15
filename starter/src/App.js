@@ -4,17 +4,20 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import * as BooksAPI from './BooksAPI';
+import SearchPage from './components/SearchPage';
 
 const App = () => {
-    // Book state
+    // useState Hooks
     const [books, setBooks] = useState([]);
 
-    // GET Books Hook
+    // useEffect Hook
     useEffect(() => {
         // Retrieve books from Server
         const fetchBooks = async () => {
             // GET API Call
             const books = await BooksAPI.getAll();
+
+            console.log(books);
             // Set
             setBooks(books);
         };
@@ -22,20 +25,9 @@ const App = () => {
         fetchBooks();
     }, []);
 
-    // UPDATE books from Server
-    const updateBookShelf = (curBook, moveBookTo) => {
-        // Update books if need be
-        const updatedBooks = books.map((book) => {
-            if (book.id === curBook.id) {
-                book.shelf = moveBookTo;
-
-                return curBook;
-            }
-
-            return book;
-        });
-
-        BooksAPI.update(curBook, moveBookTo);
+    const updateBookShelf = async (curBook, moveBookTo) => {
+        await BooksAPI.update(curBook, moveBookTo);
+        const updatedBooks = await BooksAPI.getAll();
         setBooks(updatedBooks);
     };
 
@@ -45,6 +37,11 @@ const App = () => {
                 exact
                 path="/"
                 element={<Home books={books} updateBookShelf={updateBookShelf} />}
+            />
+            <Route
+                path="/search"
+                books={books}
+                element={<SearchPage updateBookShelf={updateBookShelf} />}
             />
         </Routes>
     );
