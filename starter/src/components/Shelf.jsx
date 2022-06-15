@@ -12,9 +12,9 @@ const Shelf = ({ books, title, updateBookShelf }) => {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {books.map((curBook) => (
-                        <div key={curBook.id}>
+                        <li key={curBook.id}>
                             <Book book={curBook} updateBookShelf={updateBookShelf} />
-                        </div>
+                        </li>
                     ))}
                 </ol>
             </div>
