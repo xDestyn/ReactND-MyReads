@@ -11,11 +11,13 @@ const Shelf = ({ books, title, updateBookShelf }) => {
             <h2 className="bookshelf-title"> {title} </h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {books.map((curBook) => (
-                        <li key={curBook.id}>
-                            <Book book={curBook} updateBookShelf={updateBookShelf} />
-                        </li>
-                    ))}
+                    {books.map((curBook) => {
+                        return (
+                            <li key={curBook.id}>
+                                <Book book={curBook} updateBookShelf={updateBookShelf} />
+                            </li>
+                        );
+                    })}
                 </ol>
             </div>
         </div>
