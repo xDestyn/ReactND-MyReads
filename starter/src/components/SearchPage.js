@@ -4,7 +4,7 @@ import Book from './Book';
 import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
 
-const SearchPage = ({ updateBookShelf }) => {
+const SearchPage = ({ books, updateBookShelf }) => {
     const [query, setQuery] = useState('');
     const [displayBooks, setDisplayBooks] = useState([]);
 
@@ -13,9 +13,9 @@ const SearchPage = ({ updateBookShelf }) => {
         console.log(query);
         console.log(displayBooks);
         await BooksAPI.search(query)
-            .then((books) => {
-                if (Array.isArray(books)) {
-                    books.forEach((book) => {
+            .then((resBooks) => {
+                if (Array.isArray(resBooks)) {
+                    resBooks.forEach((book) => {
                         books.forEach((bk) => {
                             if (book.id === bk.id) {
                                 book.shelf = bk.shelf;
@@ -23,7 +23,9 @@ const SearchPage = ({ updateBookShelf }) => {
                         });
                     });
                     setDisplayBooks(
-                        books.filter((r) => r.authors !== undefined && r.imageLinks !== undefined)
+                        resBooks.filter(
+                            (book) => book.authors !== undefined && book.imageLinks !== undefined
+                        )
                     );
                 } else {
                     setDisplayBooks([]);
@@ -66,9 +68,7 @@ const SearchPage = ({ updateBookShelf }) => {
 
 SearchPage.propTypes = {
     updateBookShelf: PropTypes.func,
-    displayBooks: PropTypes.array,
-    query: PropTypes.string,
-    updateQuery: PropTypes.func
+    books: PropTypes.array
 };
 
 export default SearchPage;

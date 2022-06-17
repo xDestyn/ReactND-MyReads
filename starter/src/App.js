@@ -23,7 +23,7 @@ const App = () => {
         };
         // Call function
         fetchBooks();
-    }, [books]);
+    }, []);
 
     const updateBookShelf = async (curBook, moveBookTo) => {
         await BooksAPI.update(curBook, moveBookTo);
@@ -41,7 +41,7 @@ const App = () => {
             <Route
                 path="/search"
                 books={books}
-                element={<SearchPage updateBookShelf={updateBookShelf} />}
+                element={<SearchPage books={books} updateBookShelf={updateBookShelf} />}
             />
         </Routes>
     );
