@@ -23,10 +23,10 @@ const App = () => {
         };
         // Call function
         fetchBooks();
-    }, []);
+    }, [books]);
 
     const updateBookShelf = async (curBook, moveBookTo) => {
-        await BooksAPI.update(curBook, moveBookTo);
+        BooksAPI.update(curBook, moveBookTo);
         const updatedBooks = await BooksAPI.getAll();
         setBooks(updatedBooks);
     };

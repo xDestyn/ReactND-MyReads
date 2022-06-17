@@ -10,12 +10,15 @@ const Home = ({ books, updateBookShelf }) => {
 
     // Shelf 1 - Currently Reading
     const currentlyReading = books.filter((book) => book.shelf === 'currentlyReading');
+    console.log(currentlyReading);
 
     // Shelf 2 - Want to Read
     const wantToRead = books.filter((book) => book.shelf === 'wantToRead');
+    console.log(wantToRead);
 
     // Shelf 3 - Read
     const read = books.filter((book) => book.shelf === 'read');
+    console.log(read);
 
     return (
         <div className="list-books">

@@ -16,15 +16,17 @@ const Book = ({ book, updateBookShelf }) => {
                     <select
                         defaultValue={book.shelf ? book.shelf : 'none'}
                         onChange={(e) => {
-                            updateBookShelf(book, e.target.value);
+                            {
+                                updateBookShelf(book, e.target.value);
+                            }
                         }}>
-                        <option defaultValue="move" disabled>
+                        <option value="move" disabled>
                             Move to...
                         </option>
-                        <option defaultValue="currentlyReading">Currently Reading</option>
-                        <option defaultValue="wantToRead">Want to Read</option>
-                        <option defaultValue="read">Read</option>
-                        <option defaultValue="none">None</option>
+                        <option value="currentlyReading">Currently Reading</option>
+                        <option value="wantToRead">Want to Read</option>
+                        <option value="read">Read</option>
+                        <option value="none">None</option>
                     </select>
                 </div>
             </div>
