@@ -26,7 +26,7 @@ const App = () => {
     }, [books]);
 
     const updateBookShelf = async (curBook, moveBookTo) => {
-        BooksAPI.update(curBook, moveBookTo);
+        await BooksAPI.update(curBook, moveBookTo);
         const updatedBooks = await BooksAPI.getAll();
         setBooks(updatedBooks);
     };

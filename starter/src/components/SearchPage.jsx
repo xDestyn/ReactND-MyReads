@@ -8,11 +8,11 @@ const SearchPage = ({ updateBookShelf }) => {
     const [query, setQuery] = useState('');
     const [displayBooks, setDisplayBooks] = useState([]);
 
-    const updateQuery = (query) => {
+    const updateQuery = async (query) => {
         setQuery(query);
         console.log(query);
         console.log(displayBooks);
-        BooksAPI.search(query)
+        await BooksAPI.search(query)
             .then((books) => {
                 if (Array.isArray(books)) {
                     books.forEach((book) => {
