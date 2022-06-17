@@ -53,13 +53,14 @@ const SearchPage = ({ books, updateBookShelf }) => {
             </div>
             <div className="search-books-results">
                 <ol className="books-grid">
-                    {displayBooks.map((book) => {
-                        return (
-                            <li key={book.id}>
-                                <Book book={book} updateBookShelf={updateBookShelf} />
-                            </li>
-                        );
-                    })}
+                    {query &&
+                        displayBooks.map((book) => {
+                            return (
+                                <li key={book.id}>
+                                    <Book book={book} updateBookShelf={updateBookShelf} />
+                                </li>
+                            );
+                        })}
                 </ol>
             </div>
         </div>
